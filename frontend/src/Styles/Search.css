@@ -1,0 +1,107 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 0;
+    font-family: 'Poppins', sans-serif;
+    width: 500px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.6);
+    background-color: #FFF;
+}
+
+.search-card h2 {
+    margin: 10px 0 20px 0;
+    width: 250px;
+    padding: 10px 0;
+    color: #1da0e0;
+    font-family: Poppins, sans-serif;
+    background: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.container p {
+    width: 50px;
+    text-align: right;
+    margin: 0 10px;
+}
+
+.container .select {
+    text-align: left;
+    width: 300px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    color: #ffffff;
+    background-color: #3498db;
+    cursor: pointer;
+}
+
+.search-button:focus {
+    outline: none;
+}
+
+.search-button:hover {
+    background-color: #2980b9;
+}
+
+.datepicker {
+    width: 300px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+}
+
+.calendar {
+    font-family: 'Poppins', sans-serif;
+    border: 1.5px solid black;
+}
+
+.react-datepicker__day-name {
+    color: black;
+}
+
+.react-datepicker__day--today {
+    color: #1da0e0;
+    font-weight: bold;
+}
+
+.react-datepicker__day--selected {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.react-datepicker__day--hovered {
+    background-color: #1da0e0;
+    color: #fff;
+}
+
+.react-datepicker__navigation {
+    border: none !important;
+    outline: none !important;
+}

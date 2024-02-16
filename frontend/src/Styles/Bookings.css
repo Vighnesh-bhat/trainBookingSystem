@@ -1,0 +1,53 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    width: 70%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper h3 {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bookings-table th,
+.bookings-table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.bookings-table th {
+    background-color: #1da0e0;
+    color: white;
+}
+
+.bookings-table th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+.bookings-table th:last-child {
+    border-radius: 0 5px 0 0;
+}
+
+.bookings-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.bookings-table .departure-past {
+    background-color: #f2f2f2;
+    opacity: 0.5;
+}

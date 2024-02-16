@@ -1,0 +1,93 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    width: 50%;
+}
+
+.main-container h3 {
+    color: #1da0e0;
+    font-weight: bold;
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    width: 500px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details p {
+    margin: 0;
+}
+
+.details p:first-child {
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.booking-details hr {
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.09);
+    margin-top: 2px;
+}
+
+.details input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-btns {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #3498db;
+    cursor: pointer;
+}
+
+.book-btns:focus {
+    outline: 2px solid rgba(33, 150, 243, 0.5);
+}
+
+.success-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-message h4 {
+    margin: 0;
+}
+
+.booked-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    width: 500px;
+}
