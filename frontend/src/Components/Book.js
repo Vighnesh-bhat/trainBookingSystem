@@ -4,6 +4,8 @@ import HomeHeader from "./HomeHeader";
 import axios from "axios";
 import "../Styles/Book.css";
 import image from './DBMS-tick-mark.jpg';
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import TicketPDF from "./TicketPDF";
 
 function Book() {
   const [booked, setBooked] = useState(false);
@@ -124,7 +126,7 @@ function Book() {
     const value = event.target.value;
     const parsedValue = parseInt(value);
     const maxSeats = bookingDetails.avail;
-    if (!isNaN(parsedValue)) {
+    if(!isNaN(parsedValue)) {
       const newValue = Math.min(parsedValue, maxSeats);
       setSeats(newValue);
     } else setSeats(1);
@@ -139,17 +141,24 @@ function Book() {
         </div>
         <div className="booked-footer">
           {getButton("View Bookings", "/user/bookings")}
-          {getButton("Download Ticket")}
+            <PDFDownloadLink document={<TicketPDF bookingDetails={{...bookingDetails, seats, username}} />}
+                             fileName="ticket.pdf"
+                             className="book-btns"
+                             style={{textDecoration: "none"}}>
+              {({ loading }) => (loading ? 'Loading document...' : 'Download Ticket')}
+            </PDFDownloadLink>
         </div>
       </>
     );
   }
 
   const getButton = (name, path="") => {
-    if(name === "Confirm") {
-      return <button className="book-btns" onClick={handleConfirmClick}>{name}</button>
-    }
-    else return <button className="book-btns" onClick={() => navigate(path)}>{name}</button>
+    return (
+      <button className="book-btns"
+              onClick={(name === "Confirm")? handleConfirmClick: () => navigate(path)}>
+        {name}
+      </button>
+    )
   }
 
   const handleConfirmClick = async () => {

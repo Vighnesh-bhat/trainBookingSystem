@@ -196,21 +196,21 @@ const Trains = () => {
                      onClick={() => handleClassClick(index, "fc_price")}>
                   <div>1C</div>
                   <div className={(train.fc_capacity)? "avail-data": "not-avail"}>
-                    {(train.fc_capacity)? "Available" + train.fc_capacity: "Not Available"}
+                    {(train.fc_capacity)? "Available " + train.fc_capacity: "Not Available"}
                   </div>
                 </div>
                 <div className={"capacity" + ((divStatus[index][1])? " selected": "")}
                      onClick={() => handleClassClick(index, "sc_price")}>
                   <div>2C</div>
                   <div className={(train.sc_capacity)? "avail-data": "not-avail"}>
-                    {(train.sc_capacity)? "Available" + train.sc_capacity: "Not Available"}
+                    {(train.sc_capacity)? "Available " + train.sc_capacity: "Not Available"}
                   </div>
                 </div>
                 <div className={"capacity" + ((divStatus[index][2])? " selected": "")}
                      onClick={() => handleClassClick(index, "tc_price")}>
                   <div>3C</div>
                   <div className={(train.tc_capacity)? "avail-data": "not-avail"}>
-                    {(train.tc_capacity)? "Available" + train.tc_capacity: "Not Available"}
+                    {(train.tc_capacity)? "Available " + train.tc_capacity: "Not Available"}
                   </div>
                 </div>
               </div>

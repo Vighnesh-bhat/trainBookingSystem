@@ -167,7 +167,7 @@ app.get("/user/book", verifyToken, (req, res) => {
 
 app.post("/user/book", verifyToken, (req, res) => {
   const {username, train_id, route_id, departure_date, class_type, seats} = req.body.bookingDetails;
-  console.log(username, train_id, route_id, departure_date, class_type, seats);
+  console.log(username, train_id, route_id, departure_date, class_type, seats); //
   console.log(req.body); //
   const query = `
     INSERT INTO bookings (

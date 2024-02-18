@@ -61,6 +61,10 @@
     cursor: pointer;
 }
 
+.book-btns:hover {
+    color: #ffffff;
+}
+
 .book-btns:focus {
     outline: 2px solid rgba(33, 150, 243, 0.5);
 }
