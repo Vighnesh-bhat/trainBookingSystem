@@ -1,0 +1,70 @@
+.welcome-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.welcome-content {
+    position: absolute;
+    top: 250px;
+    left: 5%;
+    width: 650px;
+    transform: translateY(-50%);
+    color: white;
+    font-family: Poppins, sans-serif;
+    text-align: left;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.welcome-content h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-family: Ubuntu, Poppins, sans-serif;
+}
+
+.introductory-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.info-text1 {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+.info-text2 {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+.welcome-btns {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #007bff;
+    width: 120px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.welcome-btns:hover {
+    background-color: #0056b3;
+}
+
+.welcome-btns:focus {
+    outline: none;
+}
+
+.welcome-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

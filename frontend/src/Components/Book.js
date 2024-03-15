@@ -7,7 +7,7 @@ import image from './DBMS-tick-mark.jpg';
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import TicketPDF from "./TicketPDF";
 
-function Book() {
+const Book = () => {
   const [booked, setBooked] = useState(false);
   const [username, setUsername] = useState("");
   const [bookingDetails, setBookingDetails] = useState({});
@@ -113,8 +113,8 @@ function Book() {
             </div>
             <hr/>
             <div className="footer">
-              {getButton("Confirm" )}
               {getButton("Cancel", "/user/trains")}
+              {getButton("Confirm" )}
             </div>
           </div>
         </div>

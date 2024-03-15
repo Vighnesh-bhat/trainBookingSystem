@@ -161,11 +161,14 @@ const Trains = () => {
   const handleSearch = async () => {
     if(fromStation.value === toStation.value) {
       MyToast(fromStation.value, "Departure and Destination stations cannot be the same",
-        "#1da0e0", 80);
+        "#1da0e0", 94, "info");
     }
     else {
       try {
         const res = await fetch("search-post");
+        if(res.data.message.trains.length === 0)
+          MyToast(0, "No trains available for the selected stations",
+            "#1da0e0", 94, "info");
         setStatFromStation(res.data.message.start_st.label);
         setStatToStation(res.data.message.end_st.label);
         setTrains(res.data.message.trains);
@@ -216,7 +219,7 @@ const Trains = () => {
               </div>
               <div className="right">
                 <div className="price">{(prices[index]?.price)? "₹" + prices[index].price: null}</div>
-                <button className="t-book-button" onClick={() => handleBook(index)}
+                <button className="t-book-button" onClick={() => handleBook(index, train.start_time)}
                         disabled={status[index]}>
                   Book
                 </button>
@@ -285,29 +288,48 @@ const Trains = () => {
     });
   };
 
-  const handleBook = async (i) => {
-    bookingDetails.train_id = trains[i].id;
-    bookingDetails.route_id = trains[i].route_id;
-    bookingDetails.train_name = trains[i].name;
-    bookingDetails.departure_date = selectedDate.toISOString().split('T')[0];
-    bookingDetails.start_time = trains[i].start_time;
-    bookingDetails.end_time = trains[i].end_time;
-    if(prices[i].classType === "fc_price") {
-      bookingDetails.class_type = "1C";
-      bookingDetails.avail = trains[i].fc_capacity;
-    }
-    else if(prices[i].classType === "sc_price") {
-      bookingDetails.class_type = "2C";
-      bookingDetails.avail = trains[i].sc_capacity;
+  const handleBook = async (i, start_time) => {
+    if(!isValidTime(start_time)) {
+      MyToast(1, "Selected train has already departed",
+        "#1da0e0", 94, "info");
     }
     else {
-      bookingDetails.class_type = "3C";
-      bookingDetails.avail = trains[i].tc_capacity;
+      bookingDetails.train_id = trains[i].id;
+      bookingDetails.route_id = trains[i].route_id;
+      bookingDetails.train_name = trains[i].name;
+      bookingDetails.departure_date = selectedDate.toISOString().split('T')[0];
+      bookingDetails.start_time = trains[i].start_time;
+      bookingDetails.end_time = trains[i].end_time;
+      if(prices[i].classType === "fc_price") {
+        bookingDetails.class_type = "1C";
+        bookingDetails.avail = trains[i].fc_capacity;
+      }
+      else if(prices[i].classType === "sc_price") {
+        bookingDetails.class_type = "2C";
+        bookingDetails.avail = trains[i].sc_capacity;
+      }
+      else{
+        bookingDetails.class_type = "3C";
+        bookingDetails.avail = trains[i].tc_capacity;
+      }
+      bookingDetails.price = prices[i].price;
+      await fetch("book-post");
+      navigate("/user/book");
     }
-    bookingDetails.price = prices[i].price;
-    await fetch("book-post");
-    navigate("/user/book");
   }
+
+  const isValidTime = (start_time) => {
+    if(selectedDate > new Date()) return true;
+    let now = new Date();
+    now = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'}).slice(0, 8);
+    const [hours1, minutes1, seconds1] = start_time.split(':').map(Number);
+    const [hours2, minutes2, seconds2] = now.split(':').map(Number);
+
+    if (hours1 < hours2) return false;
+    else if(hours1 === hours2 && minutes1 < minutes2) return false;
+    else if(hours1 === hours2 && minutes1 === minutes2 && seconds1 < seconds2) return false;
+    return true;
+  };
 
   return (
     <>

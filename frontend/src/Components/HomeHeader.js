@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import "../Styles/Home.css";
 
-function HomeHeader(props) {
+const HomeHeader = (props) => {
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
   const profileButtonRef = useRef(null);
@@ -43,7 +43,15 @@ function HomeHeader(props) {
         {showOptions && (
           <div className="profile-options">
             <div className="option">
-              <button onClick={() => navigate("/")}>Home</button>
+              <button onClick={() => navigate("/user")}>Home</button>
+            </div>
+            <hr className="profile-option-separator"/>
+            <div className="option">
+              <button onClick={() => navigate("/user/search")}>Search</button>
+            </div>
+            <hr className="profile-option-separator"/>
+            <div className="option">
+              <button onClick={() => navigate("/user/bookings")}>Bookings</button>
             </div>
             <hr className="profile-option-separator"/>
             <div className="option">

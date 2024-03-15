@@ -10,6 +10,7 @@ const MyToast = (id, text, progressColor, top=0, type="default") => {
     transition: Slide,
     autoClose: 5000,
     closeButton: false,
+    draggable: true,
     style: {
       fontFamily: "Poppins",
       fontSize: "14px",

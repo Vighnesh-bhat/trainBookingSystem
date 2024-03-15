@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import "../Styles/Search.css"
 
-function Search() {
+const Search = () => {
   const [username, setUsername] = useState('');
   const [stations, setStations] = useState([]);
   const [fromStation, setFromStation] = useState(null);
@@ -81,14 +81,14 @@ function Search() {
         "#1da0e0", 90);
     else if(fromStation.value === toStation.value) {
       MyToast(fromStation.value, "Departure and Destination stations cannot be the same",
-        "#1da0e0", 90);
+        "#1da0e0", 90, "info");
     }
     else {
       try {
         const res = await fetch("post");
         if(res.data.message.trains.length === 0)
           MyToast(0, "No trains available for the selected stations",
-            "#1da0e0", 90);
+            "#1da0e0", 90, "info");
         else navigate("/user/trains")
       }
       catch(error) {

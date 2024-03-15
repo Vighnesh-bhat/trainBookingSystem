@@ -37,7 +37,7 @@ app.post("/signup", async (req, res) => {
     if(error) {
       return res.json({ message: "insert-error" });
     }
-    db.query("CALL createView(?)", [username], (error) => {
+    db.query("CALL createView(?)", [username, username], (error) => {
       if(error) {
         console.error("Error while creating view: ", error);
       }
@@ -188,10 +188,25 @@ app.get("/user/bookings", verifyToken, (req, res) => {
   db.query(`SELECT * FROM ${username.toLowerCase() + "_view"} ORDER BY departure_date`, (error, result) => {
     if(error) {
       console.error("Error while fetching view: ", error);
+      res.status(500).json({ error: "An error occurred while fetching data." });
     }
     else {
-      const bookings = result;
-      console.log(bookings); //
+      const getFormattedDate = (date) => {
+        const originalDate = new Date(date);
+        const year = originalDate.getFullYear();
+        const month = String(originalDate.getMonth() + 1).padStart(2, '0');
+        const day = String(originalDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+
+      const bookings = result.map(booking => {
+        return {
+          ...booking,
+          departure_date: getFormattedDate(booking.departure_date),
+          booked_on: getFormattedDate(booking.booked_on)
+        };
+      });
+
       res.json({ message: { username: username, bookings: bookings }});
     }
   });
